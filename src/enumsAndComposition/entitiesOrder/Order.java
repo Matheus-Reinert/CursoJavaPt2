@@ -1,6 +1,6 @@
-package entitiesOrder;
+package enumsAndComposition.entitiesOrder;
 
-import entitiesEnumsOrder.OrderStatus;
+import enumsAndComposition.entitiesEnumsOrder.OrderStatus;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

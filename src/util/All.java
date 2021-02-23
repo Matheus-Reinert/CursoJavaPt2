@@ -1,16 +1,19 @@
 package util;
 
-import EntitiesPost.Comment;
-import EntitiesPost.Post;
-import entitiesEnumsOrder.OrderStatus;
-import entitiesOrder.Client;
-import entitiesOrder.OrderItem;
-import entitiesOrder.Product;
-import entitiesWorker.Department;
-import entitiesWorker.HourContract;
-import entitiesWorker.Worker;
-import entitiesOrder.Order;
-import entitiesEnumsWorker.WorkerLevel;
+import enumsAndComposition.EntitiesPost.Comment;
+import enumsAndComposition.EntitiesPost.Post;
+import enumsAndComposition.entitiesEnumsOrder.OrderStatus;
+import enumsAndComposition.entitiesOrder.Client;
+import enumsAndComposition.entitiesOrder.OrderItem;
+import enumsAndComposition.entitiesOrder.Product;
+import enumsAndComposition.entitiesWorker.Department;
+import enumsAndComposition.entitiesWorker.HourContract;
+import enumsAndComposition.entitiesWorker.Worker;
+import enumsAndComposition.entitiesOrder.Order;
+import enumsAndComposition.entitiesEnumsWorker.WorkerLevel;
+import heritageAndPolymorphism.entities.Account;
+import heritageAndPolymorphism.entities.BusinessAccount;
+import heritageAndPolymorphism.entities.SavingsAccount;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,53 +23,6 @@ import java.util.Scanner;
 
 public class All {
 
-    public static void enumerationProgram () throws ParseException {
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Locale.setDefault(Locale.US);
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter client data:");
-        System.out.print("Name: ");
-        String name = sc.nextLine();
-        System.out.print("Email: ");
-        String email = sc.next();
-        System.out.print("Birth date (dd/MM/yyyy): ");
-        Date birthdate = sdf.parse(sc.next());
-
-        Client client = new Client(name, email, birthdate);
-
-
-        System.out.println("Enter order data:");
-        System.out.print("Status: ");
-        OrderStatus status = OrderStatus.valueOf(sc.next());
-        Order order = new Order(new Date(), status, client);
-
-        System.out.print("How many items to this order ? ");
-        int n = sc.nextInt();
-
-        for(int i = 1; i <= n; i++){
-            System.out.println("Enter #" + i + " item data:");
-            System.out.print("Product name: ");
-            sc.nextLine();
-            String productName = sc.nextLine();
-            System.out.print("Product price: ");
-            double productPrice = sc.nextDouble();
-            System.out.print("Quantity: ");
-            Integer productQuantity = sc.nextInt();
-
-            Product product = new Product(productName, productPrice);
-            OrderItem it = new OrderItem(productQuantity, productPrice, product);
-            order.addItem(it);
-        }
-
-        System.out.println();
-        System.out.print(order);
-
-
-
-        sc.close();
-    }
 
     public static void composition() throws ParseException {
 
@@ -145,4 +101,84 @@ public class All {
         System.out.println(p2);
 
     }
+
+    public static void enumerationProgram () throws ParseException {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter client data:");
+        System.out.print("Name: ");
+        String name = sc.nextLine();
+        System.out.print("Email: ");
+        String email = sc.next();
+        System.out.print("Birth date (dd/MM/yyyy): ");
+        Date birthdate = sdf.parse(sc.next());
+
+        Client client = new Client(name, email, birthdate);
+
+
+        System.out.println("Enter order data:");
+        System.out.print("Status: ");
+        OrderStatus status = OrderStatus.valueOf(sc.next());
+        Order order = new Order(new Date(), status, client);
+
+        System.out.print("How many items to this order ? ");
+        int n = sc.nextInt();
+
+        for(int i = 1; i <= n; i++){
+            System.out.println("Enter #" + i + " item data:");
+            System.out.print("Product name: ");
+            sc.nextLine();
+            String productName = sc.nextLine();
+            System.out.print("Product price: ");
+            double productPrice = sc.nextDouble();
+            System.out.print("Quantity: ");
+            Integer productQuantity = sc.nextInt();
+
+            Product product = new Product(productName, productPrice);
+            OrderItem it = new OrderItem(productQuantity, productPrice, product);
+            order.addItem(it);
+        }
+
+        System.out.println();
+        System.out.print(order);
+
+
+
+        sc.close();
+    }
+
+    public static void Account() {
+
+        Account acc = new Account(1001, "Alex", 0.0);
+        BusinessAccount bacc = new BusinessAccount(1002, "Maria", 0.0, 500.00);
+
+        // UPCASTING
+
+        Account acc1 = bacc;
+        Account acc2 = new BusinessAccount(1003, "Bob", 0.0, 200.00);
+        Account acc3 = new SavingsAccount(1004, "Ana", 0.0, 0.01);
+
+        // DOWNCASTING
+
+        BusinessAccount acc4 = (BusinessAccount) acc2;
+        acc4.loan(100.0);
+
+        //BusinessAccount acc5 = (BusinessAccount) acc3;
+
+        if(acc3 instanceof BusinessAccount){
+            BusinessAccount acc5 = (BusinessAccount) acc3;
+            acc5.loan(200.0);
+            System.out.println("Loan!");
+        }
+        if (acc3 instanceof SavingsAccount) {
+            SavingsAccount acc5 = (SavingsAccount) acc3;
+            acc5.updateBalance();
+            System.out.println("Update!");
+        }
+
+    }
+
 }

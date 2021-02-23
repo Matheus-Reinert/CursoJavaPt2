@@ -1,4 +1,4 @@
-package EntitiesPost;
+package enumsAndComposition.EntitiesPost;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

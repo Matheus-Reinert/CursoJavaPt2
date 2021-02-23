@@ -1,5 +1,7 @@
 package application;
 
+import heritageAndPolymorphism.entities.Account;
+
 import java.text.ParseException;
 import java.util.Scanner;
 
@@ -12,7 +14,8 @@ public class Main {
 
         System.out.println("1 - Composition and enumeration with order:");
         System.out.println("2 - Composition and enumeration with worker contracts:");
-        System.out.println("3 - composition with posts:");
+        System.out.println("3 - Composition with posts:");
+        System.out.println("4 - Heritage And Polymorphism with Account:");
         System.out.print("Enter a number: ");
 
         int opc = sc.nextInt();
@@ -22,6 +25,7 @@ public class Main {
             case 1 -> enumerationProgram();
             case 2 -> composition();
             case 3 -> post();
+            case 4 -> Account();
 
             default -> System.out.println("Are you kidding me ?");
 

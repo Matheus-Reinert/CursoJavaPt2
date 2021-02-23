@@ -1,4 +1,4 @@
-package entitiesOrder;
+package enumsAndComposition.entitiesOrder;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

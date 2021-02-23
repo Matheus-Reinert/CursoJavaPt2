@@ -1,4 +1,4 @@
-package entitiesWorker;
+package enumsAndComposition.entitiesWorker;
 
 public class Department {
 

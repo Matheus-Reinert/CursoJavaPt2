@@ -1,4 +1,4 @@
-package entitiesOrder;
+package enumsAndComposition.entitiesOrder;
 
 public class Product {
 

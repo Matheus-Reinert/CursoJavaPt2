@@ -1,4 +1,4 @@
-package entitiesWorker;
+package enumsAndComposition.entitiesWorker;
 
 import java.util.Date;
 

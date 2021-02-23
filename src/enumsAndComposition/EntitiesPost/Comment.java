@@ -1,4 +1,4 @@
-package EntitiesPost;
+package enumsAndComposition.EntitiesPost;
 
 public class Comment {
 
