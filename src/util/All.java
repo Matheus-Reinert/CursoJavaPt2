@@ -23,7 +23,11 @@ import inheritanceAndPolymorphism.entitiesShapes.Circle;
 import inheritanceAndPolymorphism.entitiesShapes.Color;
 import inheritanceAndPolymorphism.entitiesShapes.Rectangle;
 import inheritanceAndPolymorphism.entitiesShapes.Shape;
+import inheritanceAndPolymorphism.entitiesTax.LegalPerson;
+import inheritanceAndPolymorphism.entitiesTax.PhysicalPerson;
+import inheritanceAndPolymorphism.entitiesTax.Tax;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -314,6 +318,61 @@ public class All {
 
 
         sc.close();
+
+    }
+
+    public static void abstractTax() {
+
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner (System.in);
+
+        List<Tax> list = new ArrayList<>();
+
+        System.out.print("Enter the number of contributors: ");
+        int n = sc.nextInt();
+
+        for(int i = 1; i <= n; i ++) {
+
+            sc.nextLine();
+            System.out.print("Physical person or Legal person ? (p/l)");
+            char ch = sc.next().charAt(0);
+            sc.nextLine();
+            System.out.print("Name: ");
+            String name = sc.nextLine();
+            System.out.print("Annual income: ");
+            double income = sc.nextDouble();
+
+            if (ch == 'p') {
+
+                System.out.print("Health expenditure:");
+                double healthExpenses = sc.nextDouble();
+
+                list.add(new PhysicalPerson(name, income, healthExpenses));
+            } else if (ch == 'l') {
+
+                System.out.print("Number of employees: ");
+                Integer employee = sc.nextInt();
+
+                list.add(new LegalPerson(name, income, employee));
+            }
+
+        }
+
+        System.out.println();
+        System.out.println("TAXES PAID: ");
+        for (Tax tax : list) {
+
+            System.out.println(tax.toString());
+        }
+
+        System.out.println();
+        double sum = 0;
+        for(Tax tax : list) {
+            sum += tax.totalTax();
+        }
+        System.out.println(String.format("%.2f", sum));
+
+
 
     }
 

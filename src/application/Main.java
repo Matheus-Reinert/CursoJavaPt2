@@ -15,9 +15,10 @@ public class Main {
         System.out.println("3 - Composition with posts:");
         System.out.println("4 - Upercasting e Downcasting with Account: ");
         System.out.println("5 - Overlap with Account: ");
-        System.out.println("6 - Inheritance and Polymorphism with Employee: ");
-        System.out.println("7 - Abstract Class with Account: ");
-        System.out.println("8 - Abstract Methods with Shape: ");
+        System.out.println("6 - Inheritance and Polymorphism with employee: ");
+        System.out.println("7 - Abstract Class with account: ");
+        System.out.println("8 - Abstract Methods with shape: ");
+        System.out.println("9 - Abstract Methods with tax: ");
 
 
 
@@ -35,6 +36,7 @@ public class Main {
             case 6 -> employeePayment();
             case 7 -> abstractClasses();
             case 8 -> abstractMethods();
+            case 9 -> abstractTax();
 
             default -> System.out.println("Are you kidding me ?");
 
