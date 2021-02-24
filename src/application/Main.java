@@ -14,7 +14,10 @@ public class Main {
         System.out.println("2 - Composition and enumeration with worker contracts:");
         System.out.println("3 - Composition with posts:");
         System.out.println("4 - Upercasting e Downcasting with Account: ");
-        System.out.println("4 - Upercasting e Downcasting with Account: ");
+        System.out.println("5 - Overlap with Account: ");
+        System.out.println("6 - Inheritance and Polymorphism with Employee: ");
+        System.out.println("7 - Inheritance and Polymorphism with Product: ");
+
 
         System.out.print("Enter a number: ");
 
@@ -27,6 +30,8 @@ public class Main {
             case 3 -> post();
             case 4 -> accountCasting();
             case 5 -> accountOverlap();
+            case 6 -> employeePayment();
+            case 7 -> productValue();
 
             default -> System.out.println("Are you kidding me ?");
 

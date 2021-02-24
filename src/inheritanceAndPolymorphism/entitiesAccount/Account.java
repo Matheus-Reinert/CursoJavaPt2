@@ -1,4 +1,4 @@
-package heritageAndPolymorphism.entities;
+package inheritanceAndPolymorphism.entitiesAccount;
 
 public class Account {
 
