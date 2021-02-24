@@ -16,7 +16,9 @@ public class Main {
         System.out.println("4 - Upercasting e Downcasting with Account: ");
         System.out.println("5 - Overlap with Account: ");
         System.out.println("6 - Inheritance and Polymorphism with Employee: ");
-        System.out.println("7 - Inheritance and Polymorphism with Product: ");
+        System.out.println("7 - Abstract Class with Account: ");
+        System.out.println("8 - Abstract Methods with Shape: ");
+
 
 
         System.out.print("Enter a number: ");
@@ -31,7 +33,8 @@ public class Main {
             case 4 -> accountCasting();
             case 5 -> accountOverlap();
             case 6 -> employeePayment();
-            case 7 -> productValue();
+            case 7 -> abstractClasses();
+            case 8 -> abstractMethods();
 
             default -> System.out.println("Are you kidding me ?");
 

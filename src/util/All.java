@@ -1,5 +1,6 @@
 package util;
 
+import inheritanceAndPolymorphism.entitiesAbstracts.AccountAbstract;
 import enumsAndComposition.EntitiesPost.Comment;
 import enumsAndComposition.EntitiesPost.Post;
 import enumsAndComposition.entitiesEnumsOrder.OrderStatus;
@@ -11,15 +12,23 @@ import enumsAndComposition.entitiesWorker.HourContract;
 import enumsAndComposition.entitiesWorker.Worker;
 import enumsAndComposition.entitiesOrder.Order;
 import enumsAndComposition.entitiesEnumsWorker.WorkerLevel;
+import inheritanceAndPolymorphism.entitiesAbstracts.BusinessAccountAbstract;
+import inheritanceAndPolymorphism.entitiesAbstracts.SavingAccountAbstract;
 import inheritanceAndPolymorphism.entitiesAccount.Account;
 import inheritanceAndPolymorphism.entitiesAccount.BusinessAccount;
 import inheritanceAndPolymorphism.entitiesAccount.SavingsAccount;
 import inheritanceAndPolymorphism.entitiesEmployee.Employee;
 import inheritanceAndPolymorphism.entitiesEmployee.OutsourcedEmployee;
+import inheritanceAndPolymorphism.entitiesShapes.Circle;
+import inheritanceAndPolymorphism.entitiesShapes.Color;
+import inheritanceAndPolymorphism.entitiesShapes.Rectangle;
+import inheritanceAndPolymorphism.entitiesShapes.Shape;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class All {
 
@@ -183,6 +192,8 @@ public class All {
 
     public static void accountOverlap() {
 
+
+
         Account acc1 = new Account(1001, "Alex", 1000.0);
         acc1.withdraw(200.0);
         System.out.println(acc1.getBalance());
@@ -203,6 +214,7 @@ public class All {
         Scanner sc = new Scanner(System.in);
 
         List<Employee> list = new ArrayList<>();
+
 
         System.out.print("Enter the number of employee: ");
         int n = sc.nextInt();
@@ -239,8 +251,72 @@ public class All {
 
     }
 
-    public static void productValue()  {
+    public static void abstractClasses() {
 
+        List<AccountAbstract> list = new ArrayList<>();
+
+        list.add(new SavingAccountAbstract(1000, "Maria", 500.00, 0.01));
+        list.add(new BusinessAccountAbstract(1001, "Bob", 1000.00, 400.00));
+        list.add(new SavingAccountAbstract(1002, "Alex", 300.00, 0.01));
+        list.add(new SavingAccountAbstract(1003, "Anna", 500.00, 500.00));
+
+        double sum = 0.0;
+        for (AccountAbstract abs : list) {
+            sum += abs.getBalance();
+        }
+        System.out.println("Total balance: %.2f\n");
+
+        for(AccountAbstract abs : list) {
+            abs.deposit(10.0);
+        }
+        for(AccountAbstract abs : list) {
+            System.out.println(abs.getBalance());
+        }
+    }
+
+    public static void abstractMethods() {
+
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
+
+        List<Shape> list = new ArrayList<>();
+
+        System.out.print("Enter the number of shapes: ");
+        int n = sc.nextInt();
+
+        for(int i = 1; i <= n ; i++) {
+
+            System.out.println("Shape #" + i + " data: ");
+            System.out.print("Rectangle os Circle (r/c)? ");
+            char ch = sc.next().charAt(0);
+            System.out.print("Color (BLACK/BLUE/RED): ");
+            Color color = Color.valueOf(sc.next());
+
+            if(ch == 'r') {
+                System.out.print("Width: ");
+                double width = sc.nextDouble();
+                System.out.print("Height: ");
+                double height = sc.nextDouble();
+
+                list.add(new Rectangle(color, width, height));
+            } else {
+                System.out.print("Radius: ");
+                double radius = sc.nextDouble();
+                list.add(new Circle(color, radius));
+            }
+
+            System.out.println("SHAPE AREAS: ");
+            for(Shape shape : list) {
+                System.out.println(String.format("%.2f", shape.area()));
+            }
+
+        }
+
+
+        sc.close();
 
     }
+
+
+
 }
