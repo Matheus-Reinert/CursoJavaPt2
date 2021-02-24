@@ -19,6 +19,7 @@ public class Main {
         System.out.println("7 - Abstract Class with account: ");
         System.out.println("8 - Abstract Methods with shape: ");
         System.out.println("9 - Abstract Methods with tax: ");
+        System.out.println("9 - Try catch: ");
 
 
 
@@ -37,6 +38,7 @@ public class Main {
             case 7 -> abstractClasses();
             case 8 -> abstractMethods();
             case 9 -> abstractTax();
+            case 10 -> tryCatch();
 
             default -> System.out.println("Are you kidding me ?");
 

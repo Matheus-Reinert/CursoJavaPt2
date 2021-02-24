@@ -376,6 +376,28 @@ public class All {
 
     }
 
+    public static void tryCatch(){
+
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.print("Names: ");
+            String[] vect = sc.nextLine().split(" ");
+            System.out.print("Enter the position that you want: ");
+            int position = sc.nextInt();
+            System.out.println(vect[position]);
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Invalid Position");
+        } catch (InputMismatchException e) {
+            System.out.println("Input error");
+        }
+
+        System.out.println("End of program!");
+
+        sc.close();
+    }
+
 
 
 }
